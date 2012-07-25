@@ -1,5 +1,5 @@
-ome = window.OwMuchEs ||= {}
-ome.App =
+omi = window.OwMuchIs ||= {}
+omi.App =
 
   init: ->
     _.bindAll @
@@ -30,4 +30,4 @@ ome.App =
     """
     return
 
-ome.App.init()
+omi.App.init()

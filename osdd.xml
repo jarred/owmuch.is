@@ -2,5 +2,5 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>How Much Is</ShortName>
   <Description>Eg: 15usd in nzd</Description>
-  <Url type="text/html" method="get" template="http://jarred.github.com/owmuch.es/?q={searchTerms}"/>
+  <Url type="text/html" method="get" template="http://owmuch.is/?q={searchTerms}"/>
 </OpenSearchDescription>
