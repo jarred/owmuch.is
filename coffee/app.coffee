@@ -23,10 +23,11 @@ omi.App =
     ratio = @rates.rates[final] * (1 / @rates.rates[base])
     convertedAmount = ratio * amount
     console.log @rates
-    $("#result").html """
-      <p><span class="number">#{accounting.formatMoney(amount)}</span><span class="currency-code">#{base}</span>
-      is about
-      <span class="number">#{accounting.formatMoney(convertedAmount)}</span><span class="currency-code">#{final}</span></p>
+    $('.amount.base').html """
+      <span class="currency-symbol">&euro;</span>#{accounting.formatMoney(amount, {format:'%v'})}<span class="currency-code">#{base}</span>
+    """
+    $('.amount.conversion').html """
+      <span class="currency-symbol">$</span>#{accounting.formatMoney(convertedAmount, {format:'%v'})}<span class="currency-code">#{final}</span>
     """
     return
 
