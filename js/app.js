@@ -7,16 +7,20 @@
   omi.App = {
     init: function() {
       _.bindAll(this);
+      $('form').bind('submit', this.submit);
     },
     setRates: function(rates) {
       this.rates = rates;
       if (window.location.search != null) {
-        this.doConversion();
+        this.doConversion(String(window.location.search).replace(/\+/ig, ' ').replace(/\?q=/ig, '').replace(/\//ig, ''));
       }
     },
-    doConversion: function() {
-      var amount, base, convertedAmount, currencyCodes, final, ratio, term;
-      term = String(window.location.search).replace(/\+/ig, ' ').replace(/\?q=/ig, '').replace(/\//ig, '');
+    submit: function(e) {
+      e.preventDefault();
+      this.doConversion($('input').val());
+    },
+    doConversion: function(term) {
+      var amount, base, convertedAmount, currencyCodes, final, ratio;
       console.log('term', term);
       $('input[type=search]').val(term);
       amount = Number(term.match(/[0-9?.0-9]*/));
@@ -29,12 +33,25 @@
       ratio = this.rates.rates[final] * (1 / this.rates.rates[base]);
       convertedAmount = ratio * amount;
       console.log(this.rates);
-      $('.amount.base').html("<span class=\"currency-symbol\">&euro;</span>" + (accounting.formatMoney(amount, {
+      $('.amount.base').html("<span class=\"currency-symbol\">" + (OwMuchIs.App.symbolFromCurrencyCode(base)) + "</span>" + (accounting.formatMoney(amount, {
         format: '%v'
       })) + "<span class=\"currency-code\">" + base + "</span>");
-      $('.amount.conversion').html("<span class=\"currency-symbol\">$</span>" + (accounting.formatMoney(convertedAmount, {
+      $('.amount.conversion').html("<span class=\"currency-symbol\">" + (OwMuchIs.App.symbolFromCurrencyCode(final)) + "</span>" + (accounting.formatMoney(convertedAmount, {
         format: '%v'
       })) + "<span class=\"currency-code\">" + final + "</span>");
+    },
+    symbolFromCurrencyCode: function(code) {
+      switch (code) {
+        case "JPY":
+        case "CNY":
+          return "&yen;";
+        case "GBP":
+          return "&pound;";
+        case "EUR":
+          return "&euro;";
+        default:
+          return "$";
+      }
     }
   };
 
