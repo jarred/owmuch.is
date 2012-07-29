@@ -217,10 +217,11 @@ form {
   letter-spacing: 1px;
   background: #000000;
   color: #FFF;
-  padding: 0px 5px;
+  padding: 0px 4px 0px 5px;
   border-radius: 4px;
   text-transform: uppercase;
   margin-left: 8px;
+  top: -12px;
 }
 .amount.base {
   left: 0px;

@@ -4,6 +4,8 @@ omi.App =
   init: ->
     _.bindAll @
     $('form').bind 'submit', @submit
+    # $('form').bind 'keyup', @submit
+    accounting.settings.currency.format = '<span class="currency-symbol">%s</span>%v'
     return
 
   setRates: (@rates) ->
@@ -30,10 +32,10 @@ omi.App =
     convertedAmount = ratio * amount
     console.log @rates
     $('.amount.base').html """
-      <span class="currency-symbol">#{OwMuchIs.App.symbolFromCurrencyCode(base)}</span>#{accounting.formatMoney(amount, {format:'%v'})}<span class="currency-code">#{base}</span>
+      #{accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))}<span class="currency-code">#{base}</span>
     """
     $('.amount.conversion').html """
-      <span class="currency-symbol">#{OwMuchIs.App.symbolFromCurrencyCode(final)}</span>#{accounting.formatMoney(convertedAmount, {format:'%v'})}<span class="currency-code">#{final}</span>
+      #{accounting.formatMoney(convertedAmount, OwMuchIs.App.symbolFromCurrencyCode(final))}<span class="currency-code">#{final}</span>
     """
     return
 

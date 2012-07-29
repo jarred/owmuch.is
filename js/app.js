@@ -8,6 +8,7 @@
     init: function() {
       _.bindAll(this);
       $('form').bind('submit', this.submit);
+      accounting.settings.currency.format = '<span class="currency-symbol">%s</span>%v';
     },
     setRates: function(rates) {
       this.rates = rates;
@@ -33,12 +34,8 @@
       ratio = this.rates.rates[final] * (1 / this.rates.rates[base]);
       convertedAmount = ratio * amount;
       console.log(this.rates);
-      $('.amount.base').html("<span class=\"currency-symbol\">" + (OwMuchIs.App.symbolFromCurrencyCode(base)) + "</span>" + (accounting.formatMoney(amount, {
-        format: '%v'
-      })) + "<span class=\"currency-code\">" + base + "</span>");
-      $('.amount.conversion').html("<span class=\"currency-symbol\">" + (OwMuchIs.App.symbolFromCurrencyCode(final)) + "</span>" + (accounting.formatMoney(convertedAmount, {
-        format: '%v'
-      })) + "<span class=\"currency-code\">" + final + "</span>");
+      $('.amount.base').html("" + (accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))) + "<span class=\"currency-code\">" + base + "</span>");
+      $('.amount.conversion').html("" + (accounting.formatMoney(convertedAmount, OwMuchIs.App.symbolFromCurrencyCode(final))) + "<span class=\"currency-code\">" + final + "</span>");
     },
     symbolFromCurrencyCode: function(code) {
       switch (code) {
