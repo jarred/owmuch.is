@@ -6,6 +6,7 @@ omi.App =
     $('form').bind 'submit', @submit
     # $('form').bind 'keyup', @submit
     accounting.settings.currency.format = '<span class="currency-symbol">%s</span>%v'
+    # $('#input').bind 'keypress', @submit
     return
 
   setRates: (@rates) ->

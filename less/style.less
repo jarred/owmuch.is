@@ -44,11 +44,13 @@ a{
 }
 
 #logo{
-  color: @highlight;
+  color: #FFF;
   position: absolute;
-  left: @margin;
+  left: 50%;
+  margin-left: @margin;
   top: @margin;
   z-index: 2;
+  border-color: #FFF;
 }
 
 #info{
@@ -86,10 +88,23 @@ a{
 }
 
 form{
+  background: #ff0000;
   position: fixed;
-  left: @margin;
-  top: @margin * 3;
-  z-index: 2;
+  left: 0px;
+  right: 50%;
+  top: 0px;
+  .pad{
+    
+  }
+  input{
+    display: block;
+    width: 100%;
+    padding: @margin;
+    -webkit-appearance: textfield;
+    outline: none;
+    border: 0px;
+    background-color: #e0f2f7;
+  }
 }
 
 #equals{
@@ -127,6 +142,8 @@ form{
     position: relative;
     background: @highlight;
     color: #FFF;
+    position: relative;
+    top: -2px;
   }
   > .currency-code{
     font: 600 12px/20px 'Helvetica Neue';
@@ -153,6 +170,39 @@ form{
     > .currency-code{
       background: #FFF;
       color: @highlight;
+    }
+  }
+}
+
+@media screen and (max-width: 470px){
+  #bg-black{
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 50%;
+  } 
+  #rates{
+    color: #FFF;
+    a{
+      border-color: #FFF;
+      color: #FFF;
+    }
+  } 
+  form{
+    right: 0px;
+  }
+  #credit,
+  #logo{
+    display: none;
+  }
+  .amount{
+    left: 0px !important;
+    right: 0px !important;
+    &.base{
+      top: 25%;
+    }
+    &.conversion{
+      top: 75%;
     }
   }
 }

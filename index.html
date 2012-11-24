@@ -4,17 +4,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>owMuch.is?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link type="application/opensearchdescription+xml" rel="search" href="./osdd.xml"/>
+  <link type="application/opensearchdescription+xml" rel="search" href="/osdd.xml"/>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body> 
   <div id="bg-black"></div>
   <a href="/" id="logo">owmuch.is</a>
-  <p id="info">Type into the field below</p>
   <p id="rates">Rates provided by <a href="http://openexchangerates.org/" target="_blank">Open Exchange Rates</a></p>
   <p id="credit">by <a href="http://bbb.io">bit by bit</a></p>
   <form action="./" method="GET">
-    <input type="search" name="q" placeholder="eg: 15usd in nzd" />
+    <div class="pad"><input type="search" name="q" id="input" placeholder="eg: 15usd in nzd" /></div>
   </form>
 
   <div class="amount base"></div>
