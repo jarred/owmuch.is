@@ -9,6 +9,7 @@
       _.bindAll(this);
       $('form').bind('submit', this.submit);
       accounting.settings.currency.format = '<span class="currency-symbol">%s</span>%v';
+      $('input').focus();
     },
     setRates: function(rates) {
       this.rates = rates;
