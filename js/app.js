@@ -33,7 +33,6 @@
       }
       ratio = this.rates.rates[final] * (1 / this.rates.rates[base]);
       convertedAmount = ratio * amount;
-      console.log(this.rates);
       $('.amount.base').html("" + (accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))) + "<span class=\"currency-code\">" + base + "</span>");
       $('.amount.conversion').html("" + (accounting.formatMoney(convertedAmount, OwMuchIs.App.symbolFromCurrencyCode(final))) + "<span class=\"currency-code\">" + final + "</span>");
     },

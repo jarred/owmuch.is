@@ -31,7 +31,8 @@ omi.App =
 
     ratio = @rates.rates[final] * (1 / @rates.rates[base])
     convertedAmount = ratio * amount
-    console.log @rates
+
+    # console.log @rates
     $('.amount.base').html """
       #{accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))}<span class="currency-code">#{base}</span>
     """
