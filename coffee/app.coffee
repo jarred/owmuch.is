@@ -21,10 +21,10 @@ omi.App =
     return
 
   doConversion: (term) ->
-    console.log 'term', term
     $('input[type=search]').val term
     amount = Number term.match(/[0-9?.0-9]*/)
     currencyCodes = term.match /[a-z]{3}/ig
+    return if currencyCodes is null
     base = currencyCodes[0].toUpperCase()
     final = geoplugin_currencyCode()
     if currencyCodes[1]?
@@ -33,13 +33,16 @@ omi.App =
     ratio = @rates.rates[final] * (1 / @rates.rates[base])
     convertedAmount = ratio * amount
 
-    # console.log @rates
     $('.amount.base').html """
       #{accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))}<span class="currency-code">#{base}</span>
     """
     $('.amount.conversion').html """
       #{accounting.formatMoney(convertedAmount, OwMuchIs.App.symbolFromCurrencyCode(final))}<span class="currency-code">#{final}</span>
     """
+
+    _gaq.push(['_trackEvent', 'Conversion', 'Do']);
+    _gaq.push(['_trackEvent', 'Conversion', 'base', base]);
+    _gaq.push(['_trackEvent', 'Conversion', 'final', final]);
     return
 
   symbolFromCurrencyCode: (code) ->

@@ -23,10 +23,12 @@
     },
     doConversion: function(term) {
       var amount, base, convertedAmount, currencyCodes, final, ratio;
-      console.log('term', term);
       $('input[type=search]').val(term);
       amount = Number(term.match(/[0-9?.0-9]*/));
       currencyCodes = term.match(/[a-z]{3}/ig);
+      if (currencyCodes === null) {
+        return;
+      }
       base = currencyCodes[0].toUpperCase();
       final = geoplugin_currencyCode();
       if (currencyCodes[1] != null) {
@@ -36,6 +38,9 @@
       convertedAmount = ratio * amount;
       $('.amount.base').html("" + (accounting.formatMoney(amount, OwMuchIs.App.symbolFromCurrencyCode(base))) + "<span class=\"currency-code\">" + base + "</span>");
       $('.amount.conversion').html("" + (accounting.formatMoney(convertedAmount, OwMuchIs.App.symbolFromCurrencyCode(final))) + "<span class=\"currency-code\">" + final + "</span>");
+      _gaq.push(['_trackEvent', 'Conversion', 'Do']);
+      _gaq.push(['_trackEvent', 'Conversion', 'base', base]);
+      _gaq.push(['_trackEvent', 'Conversion', 'final', final]);
     },
     symbolFromCurrencyCode: function(code) {
       switch (code) {
