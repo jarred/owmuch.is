@@ -17,4 +17,4 @@ A simple currency search.
 - 44000jpy (detects loctation and auto converts to nzd)
 - $44 in €
 
-[Check it out](http://bit-by-bit.github.com/owmuch.is/)
+[Check it out](http://owmuch.is/)
