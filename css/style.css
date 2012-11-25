@@ -180,6 +180,8 @@ form {
   left: 0px;
   right: 50%;
   top: 0px;
+  overflow: hidden;
+  background-color: #e0f2f7;
 }
 form input {
   display: block;
